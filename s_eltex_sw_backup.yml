@@ -1,6 +1,4 @@
 - hosts: mes23_sw
-  vars:
-    - ansible_network_os = eltex.mes.ros
   become: yes
   gather_facts: false
   connection: network_cli
