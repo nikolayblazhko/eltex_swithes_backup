@@ -1,4 +1,6 @@
-- hosts: mes_sw_all
+- hosts: mes23_sw
+  vars:
+    - ansible_network_os = eltex.mes.ros
   become: yes
   gather_facts: false
   connection: network_cli
@@ -6,7 +8,7 @@
     - eltex.mes
 
   tasks:
-    - name: copy running config mes23xx and mes24xx to ftp
+    - name: copy running config mes23xx
       mes_command:
          commands: 
           - copy running-config tftp://10.117.2.55/{{ inventory_hostname }}.txt
