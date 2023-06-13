@@ -1,0 +1,12 @@
+- hosts: mes_sw_all
+  become: yes
+  gather_facts: false
+  connection: network_cli
+  collections:
+    - eltex.mes
+
+  tasks:
+    - name: copy running config mes23xx and mes24xx to ftp
+      mes_command:
+         commands: 
+          - copy running-config tftp://10.117.2.55/{{ inventory_hostname }}.txt
