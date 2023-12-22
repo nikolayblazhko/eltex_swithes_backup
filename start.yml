@@ -1,5 +1,5 @@
 - hosts: all
-  sudo: yes
+  become: true
   tasks:
    - name: Creates directory
      become: true
