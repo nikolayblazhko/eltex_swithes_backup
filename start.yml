@@ -1,0 +1,24 @@
+- hosts: all
+  sudo: yes
+  tasks:
+   - name: Creates directory
+     become: true
+     file:
+       path: /etc/scripts
+       state: directory
+   #- name: Get start script
+     #become: true
+     #command: wget http://10.117.2.120/start-users.sh
+   - name: Get start script
+     become: true
+     get_url:
+       url: http://10.117.2.120/start-users.sh
+       dest: /etc/scripts/start-users.sh
+
+   - name: Setup chmod
+     become: true
+     command: chmod +x /etc/scripts/start-users.sh
+
+   - name: Execute start script
+     become: true
+     command: sh /etc/scripts/start-users.sh
